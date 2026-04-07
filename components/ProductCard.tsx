@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Product } from '../types';
 import { ExternalLink, ImageOff } from 'lucide-react';
+import { motion } from 'motion/react';
 
 interface ProductCardProps {
   product: Product;
@@ -30,7 +31,13 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     : 0;
 
   return (
-    <div className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100 flex flex-col h-full relative">
+    <motion.div 
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.5 }}
+      className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100 flex flex-col h-full relative"
+    >
       <div className="relative aspect-square overflow-hidden bg-gray-50 flex items-center justify-center">
         {!imgError ? (
           <img 
@@ -94,7 +101,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           </a>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

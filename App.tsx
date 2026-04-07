@@ -10,7 +10,8 @@ import {
   Zap, 
   ArrowUp 
 } from 'lucide-react';
-import { WHY_US, SHEET_CSV_URL } from './constants';
+import { motion } from 'motion/react';
+import { WHY_US, SHEET_CSV_URL, REAL_PHOTOS, LOGO_URL } from './constants';
 import { Category, Product, BadgeType } from './types';
 import ProductCard from './components/ProductCard';
 
@@ -156,11 +157,15 @@ const App: React.FC = () => {
         </div>
       </div>
 
-      <header className={`fixed top-11 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'bg-white/95 shadow-xl py-4 top-0 backdrop-blur-md border-b border-gray-100' : 'bg-transparent py-12'}`}>
+      <header className="absolute top-11 left-0 right-0 z-50 bg-transparent py-12">
         <div className="container mx-auto px-4 flex justify-between items-center">
           <div className="flex items-center gap-5 group cursor-pointer" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
-            <div className={`p-3.5 rounded-2xl transition-all duration-500 shadow-lg ${scrolled ? 'bg-[#EE4D2D]' : 'bg-white'}`}>
-              <ShieldCheck className={scrolled ? 'text-white w-8 h-8' : 'text-[#EE4D2D] w-8 h-8'} />
+            <div className="p-2 rounded-2xl transition-all duration-500 shadow-lg bg-white flex items-center justify-center w-14 h-14">
+              {LOGO_URL ? (
+                <img src={LOGO_URL} alt="Logo" className="w-full h-full object-contain" referrerPolicy="no-referrer" />
+              ) : (
+                <ShieldCheck className="text-[#EE4D2D] w-8 h-8" />
+              )}
             </div>
             <div className="flex flex-col">
               <span className="text-2xl md:text-3xl font-black tracking-tight uppercase text-gray-950 leading-none">
@@ -188,27 +193,45 @@ const App: React.FC = () => {
         </div>
         
         <div className="container mx-auto px-4 text-center relative z-10">
-          <div className="inline-flex items-center gap-4 bg-white border border-gray-100 px-10 py-4.5 rounded-full mb-20 shadow-xl shadow-gray-100/50 group hover:border-orange-200 transition-colors">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-4 bg-white border border-gray-100 px-10 py-4.5 rounded-full mb-20 shadow-xl shadow-gray-100/50 group hover:border-orange-200 transition-colors"
+          >
             <Zap size={18} className="text-orange-500 fill-orange-500 animate-pulse" />
             <span className="text-gray-900 text-[11px] md:text-xs font-extrabold uppercase tracking-[0.25em]">Cập nhật bảng giá ưu đãi hằng ngày</span>
-          </div>
+          </motion.div>
           
-          <h1 className="text-5xl md:text-[88px] font-black text-gray-950 mb-12 leading-[1.2] tracking-tight italic uppercase">
+          <motion.h1 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-5xl md:text-[88px] font-black text-gray-950 mb-12 leading-[1.2] tracking-tight italic uppercase"
+          >
             Kho <span className="text-[#EE4D2D]">Tủ Sấy UV</span> <br className="hidden md:block"/>
             <span className="relative inline-block mt-4">Giá Tận Gốc Online</span>
-          </h1>
+          </motion.h1>
           
-          <p className="text-gray-500 text-lg md:text-2xl max-w-4xl mx-auto mb-20 leading-[1.8] font-medium italic px-6 opacity-70">
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-gray-500 text-lg md:text-2xl max-w-4xl mx-auto mb-20 leading-[1.8] font-medium italic px-6 opacity-70"
+          >
             Phân phối sỉ lẻ thiết bị tiệt trùng tia cực tím chuyên dụng <br className="hidden md:block"/> 
             cho gia đình, nhà hàng, Spa & cơ sở y tế.
-          </p>
+          </motion.p>
           
-          <button 
+          <motion.button 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
             onClick={() => document.getElementById('catalog')?.scrollIntoView({ behavior: 'smooth' })} 
             className="group bg-[#EE4D2D] text-white px-24 py-8.5 rounded-[3rem] font-black text-xl shadow-2xl shadow-orange-300/40 hover:bg-gray-950 transition-all transform hover:-translate-y-2.5 flex items-center justify-center gap-4 uppercase italic mx-auto active:scale-95"
           >
             Xem Ưu Đãi Ngay <ChevronRight size={36} className="group-hover:translate-x-3 transition-transform duration-300" />
-          </button>
+          </motion.button>
         </div>
       </section>
 
@@ -216,7 +239,13 @@ const App: React.FC = () => {
       <section id="catalog" className="py-48 bg-gray-50/60 min-h-[900px] border-t border-gray-100">
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-32 gap-16">
-            <div className="max-w-3xl">
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="max-w-3xl"
+            >
               <div className="inline-block bg-[#EE4D2D]/10 text-[#EE4D2D] px-8 py-3.5 rounded-2xl text-[12px] font-black uppercase tracking-[0.2em] mb-12">
                 Authorized Distribution
               </div>
@@ -226,9 +255,15 @@ const App: React.FC = () => {
               <p className="text-gray-500 text-xl md:text-2xl font-medium leading-[1.7] italic opacity-70 max-w-xl">
                 Toàn bộ dữ liệu được cập nhật tự động từ kho tổng theo thời gian thực.
               </p>
-            </div>
+            </motion.div>
             
-            <div className="flex overflow-x-auto gap-4 pb-10 no-scrollbar -mx-4 px-4">
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="flex overflow-x-auto gap-4 pb-10 no-scrollbar -mx-4 px-4"
+            >
               {categories.map((cat) => (
                 <button
                   key={cat}
@@ -242,7 +277,7 @@ const App: React.FC = () => {
                   {cat}
                 </button>
               ))}
-            </div>
+            </motion.div>
           </div>
 
           {loading ? (
@@ -260,27 +295,81 @@ const App: React.FC = () => {
         </div>
       </section>
 
+      {/* Real Photos Section */}
+      <section className="py-32 bg-gray-950 text-white">
+        <div className="container mx-auto px-4">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-6xl mx-auto mb-20"
+          >
+            <h2 className="text-4xl md:text-[64px] font-black tracking-tight uppercase italic leading-[1.2] mb-4">
+              Ảnh Sản Phẩm <span className="text-[#EE4D2D]">Thực Tế</span>
+            </h2>
+            <p className="text-gray-400 text-lg md:text-xl font-medium leading-[1.7] italic max-w-2xl mx-auto">
+              Hình ảnh thực tế các dòng tủ sấy tiệt trùng UV được phân phối trực tiếp từ tổng kho đến tay khách hàng.
+            </p>
+          </motion.div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
+            {REAL_PHOTOS.map((photo, idx) => (
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                key={idx} 
+                className="relative group overflow-hidden rounded-3xl aspect-[4/3] bg-gray-900"
+              >
+                <img 
+                  src={photo} 
+                  alt={`Ảnh thực tế tủ sấy UV ${idx + 1}`} 
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Why Us - Adjusted Leading to 1.2 */}
       <section className="py-64 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center max-w-6xl mx-auto mb-40">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-6xl mx-auto mb-40"
+          >
             <h2 className="text-5xl md:text-[82px] font-black text-gray-950 tracking-tight uppercase italic leading-[1.2] mb-4">
               Lợi thế cạnh tranh tại
             </h2>
             <h2 className="text-5xl md:text-[82px] font-black text-[#EE4D2D] tracking-tight uppercase italic leading-[1.2]">
               Tổng Kho Tủ Sấy UV
             </h2>
-          </div>
+          </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-14">
             {WHY_US.map((item, idx) => (
-              <div key={idx} className="bg-gray-50/70 p-16 rounded-[4.5rem] hover:bg-orange-50/60 transition-all duration-700 group border border-transparent hover:border-orange-100 flex flex-col items-center text-center">
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+                key={idx} 
+                className="bg-gray-50/70 p-16 rounded-[4.5rem] hover:bg-orange-50/60 transition-all duration-700 group border border-transparent hover:border-orange-100 flex flex-col items-center text-center"
+              >
                 <div className="bg-white w-32 h-32 rounded-[2.5rem] flex items-center justify-center shadow-2xl mb-14 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-500">
                   {item.icon}
                 </div>
                 <h3 className="text-2xl md:text-3xl font-black text-gray-950 mb-8 tracking-normal uppercase italic leading-tight">{item.title}</h3>
                 <p className="text-gray-500 font-medium leading-[1.8] italic text-base md:text-lg opacity-80 px-4">{item.description}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -290,14 +379,35 @@ const App: React.FC = () => {
       <footer className="bg-gray-950 text-gray-500 py-48 border-t border-gray-900 mt-auto">
         <div className="container mx-auto px-4 text-center">
           <div className="flex items-center justify-center gap-6 mb-16 group cursor-pointer" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
-            <ShieldCheck className="text-[#EE4D2D] w-16 h-16" />
+            {LOGO_URL ? (
+              <div className="w-20 h-20 bg-white rounded-2xl p-2 shadow-lg">
+                <img src={LOGO_URL} alt="Logo" className="w-full h-full object-contain" referrerPolicy="no-referrer" />
+              </div>
+            ) : (
+              <ShieldCheck className="text-[#EE4D2D] w-16 h-16" />
+            )}
             <span className="text-5xl md:text-6xl font-black text-white tracking-tighter uppercase italic leading-none">
               TỔNG KHO <span className="text-[#EE4D2D]">UV</span>
             </span>
           </div>
-          <p className="text-xl md:text-2xl opacity-60 mb-24 italic max-w-5xl mx-auto leading-[1.8] tracking-normal">
+          <p className="text-xl md:text-2xl opacity-60 mb-20 italic max-w-5xl mx-auto leading-[1.8] tracking-normal">
             Mạng lưới phân phối tủ sấy tiệt trùng UV hàng đầu Việt Nam. <br className="hidden md:block"/> Cam kết sản phẩm đạt chuẩn y tế & mức giá tối ưu nhất cho đối tác.
           </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-20 text-center">
+            <div className="bg-gray-900/50 p-8 rounded-3xl border border-gray-800 hover:border-gray-700 transition-colors">
+              <h4 className="text-white font-black uppercase tracking-widest mb-4 text-sm">Hotline Hỗ Trợ</h4>
+              <a href="tel:0369333910" className="text-[#EE4D2D] font-black text-3xl hover:text-white transition-colors">0369333910</a>
+            </div>
+            <div className="bg-gray-900/50 p-8 rounded-3xl border border-gray-800 hover:border-gray-700 transition-colors">
+              <h4 className="text-white font-black uppercase tracking-widest mb-4 text-sm">Chi Nhánh Hà Nội</h4>
+              <p className="text-gray-400 font-medium text-lg leading-relaxed">369 Tô Hiệu<br/>Cầu Giấy, Hà Nội</p>
+            </div>
+            <div className="bg-gray-900/50 p-8 rounded-3xl border border-gray-800 hover:border-gray-700 transition-colors">
+              <h4 className="text-white font-black uppercase tracking-widest mb-4 text-sm">Chi Nhánh TP.HCM</h4>
+              <p className="text-gray-400 font-medium text-lg leading-relaxed">310 Tô Hiến Thành<br/>Quận 10, Hồ Chí Minh</p>
+            </div>
+          </div>
           
           <div className="flex justify-center gap-12 mb-28">
             <a href={CONTACT.facebook} target="_blank" className="w-24 h-24 rounded-full bg-gray-900 flex items-center justify-center text-white hover:bg-blue-600 transition-all shadow-2xl hover:-translate-y-3"><Facebook size={36} /></a>
@@ -315,11 +425,22 @@ const App: React.FC = () => {
       {scrolled && (
         <button 
           onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})} 
-          className="fixed bottom-14 right-14 bg-[#EE4D2D] text-white p-6.5 rounded-[1.8rem] shadow-2xl z-[70] hover:scale-110 active:scale-90 transition-all border-2 border-white/10"
+          className="fixed bottom-14 right-14 bg-[#EE4D2D] text-white p-6.5 rounded-[1.8rem] shadow-2xl z-[70] hover:scale-110 active:scale-90 transition-all border-2 border-white/10 hidden md:block"
         >
           <ArrowUp size={36} />
         </button>
       )}
+
+      {/* Floating Call CTA */}
+      <a 
+        href={`tel:${CONTACT.phone}`}
+        className="fixed bottom-8 left-8 md:bottom-14 md:left-14 z-[70] group flex items-center justify-center"
+      >
+        <div className="absolute inset-0 bg-[#EE4D2D] rounded-full animate-ping opacity-60 duration-1000"></div>
+        <div className="relative bg-[#EE4D2D] text-white p-4 md:p-5 rounded-full shadow-2xl transition-transform duration-300 group-hover:scale-110 border-2 border-white/20 flex items-center justify-center">
+          <Phone size={28} className="md:w-8 md:h-8" />
+        </div>
+      </a>
     </div>
   );
 };
