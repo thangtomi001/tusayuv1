@@ -11,7 +11,7 @@ import {
   ArrowUp 
 } from 'lucide-react';
 import { motion } from 'motion/react';
-import { WHY_US, SHEET_CSV_URL, REAL_PHOTOS, LOGO_URL } from './constants';
+import { WHY_US, SHEET_CSV_URL, REAL_PHOTOS, LOGO_URL, HERO_BG_URL } from './constants';
 import { Category, Product, BadgeType } from './types';
 import ProductCard from './components/ProductCard';
 
@@ -168,10 +168,10 @@ const App: React.FC = () => {
               )}
             </div>
             <div className="flex flex-col">
-              <span className="text-2xl md:text-3xl font-black tracking-tight uppercase text-gray-950 leading-none">
+              <span className="text-2xl md:text-3xl font-black tracking-tight uppercase text-white leading-none">
                 TỔNG KHO <span className="text-[#EE4D2D]">UV</span>
               </span>
-              <span className="text-[10px] font-bold text-gray-400 uppercase tracking-[0.4em] mt-2 opacity-70 italic">Premium Catalog</span>
+              <span className="text-[10px] font-bold text-gray-300 uppercase tracking-[0.4em] mt-2 opacity-90 italic">Premium Catalog</span>
             </div>
           </div>
           <div className="flex items-center gap-5">
@@ -186,10 +186,19 @@ const App: React.FC = () => {
       </header>
 
       {/* Hero Section */}
-      <section className="relative pt-64 pb-32 md:pt-80 md:pb-64 overflow-hidden bg-white">
+      <section className="relative pt-64 pb-32 md:pt-80 md:pb-64 overflow-hidden bg-gray-950">
         <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
-           <div className="absolute top-0 left-1/4 w-[1000px] h-[1000px] bg-orange-50/70 rounded-full blur-[200px] opacity-50"></div>
-           <div className="absolute bottom-0 right-1/4 w-[800px] h-[800px] bg-blue-50/50 rounded-full blur-[180px] opacity-30"></div>
+           {HERO_BG_URL ? (
+             <>
+               <img src={HERO_BG_URL} alt="Background" className="w-full h-full object-cover opacity-60" referrerPolicy="no-referrer" />
+               <div className="absolute inset-0 bg-gradient-to-b from-gray-950/80 via-gray-950/40 to-white"></div>
+             </>
+           ) : (
+             <>
+               <div className="absolute top-0 left-1/4 w-[1000px] h-[1000px] bg-orange-50/70 rounded-full blur-[200px] opacity-50"></div>
+               <div className="absolute bottom-0 right-1/4 w-[800px] h-[800px] bg-blue-50/50 rounded-full blur-[180px] opacity-30"></div>
+             </>
+           )}
         </div>
         
         <div className="container mx-auto px-4 text-center relative z-10">
@@ -197,17 +206,17 @@ const App: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-4 bg-white border border-gray-100 px-10 py-4.5 rounded-full mb-20 shadow-xl shadow-gray-100/50 group hover:border-orange-200 transition-colors"
+            className="inline-flex items-center gap-4 bg-white/10 backdrop-blur-md border border-white/20 px-10 py-4.5 rounded-full mb-20 shadow-xl group hover:bg-white/20 transition-colors"
           >
-            <Zap size={18} className="text-orange-500 fill-orange-500 animate-pulse" />
-            <span className="text-gray-900 text-[11px] md:text-xs font-extrabold uppercase tracking-[0.25em]">Cập nhật bảng giá ưu đãi hằng ngày</span>
+            <Zap size={18} className="text-orange-400 fill-orange-400 animate-pulse" />
+            <span className="text-white text-[11px] md:text-xs font-extrabold uppercase tracking-[0.25em]">Cập nhật bảng giá ưu đãi hằng ngày</span>
           </motion.div>
           
           <motion.h1 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-[88px] font-black text-gray-950 mb-12 leading-[1.2] tracking-tight italic uppercase"
+            className="text-5xl md:text-[88px] font-black text-white mb-12 leading-[1.2] tracking-tight italic uppercase"
           >
             Kho <span className="text-[#EE4D2D]">Tủ Sấy UV</span> <br className="hidden md:block"/>
             <span className="relative inline-block mt-4">Giá Tận Gốc Online</span>
@@ -217,7 +226,7 @@ const App: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-gray-500 text-lg md:text-2xl max-w-4xl mx-auto mb-20 leading-[1.8] font-medium italic px-6 opacity-70"
+            className="text-gray-200 text-lg md:text-2xl max-w-4xl mx-auto mb-20 leading-[1.8] font-medium italic px-6 opacity-90"
           >
             Phân phối sỉ lẻ thiết bị tiệt trùng tia cực tím chuyên dụng <br className="hidden md:block"/> 
             cho gia đình, nhà hàng, Spa & cơ sở y tế.
@@ -228,7 +237,7 @@ const App: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
             onClick={() => document.getElementById('catalog')?.scrollIntoView({ behavior: 'smooth' })} 
-            className="group bg-[#EE4D2D] text-white px-24 py-8.5 rounded-[3rem] font-black text-xl shadow-2xl shadow-orange-300/40 hover:bg-gray-950 transition-all transform hover:-translate-y-2.5 flex items-center justify-center gap-4 uppercase italic mx-auto active:scale-95"
+            className="group bg-[#EE4D2D] text-white px-24 py-8.5 rounded-[3rem] font-black text-xl shadow-2xl shadow-orange-500/30 hover:bg-white hover:text-[#EE4D2D] transition-all transform hover:-translate-y-2.5 flex items-center justify-center gap-4 uppercase italic mx-auto active:scale-95"
           >
             Xem Ưu Đãi Ngay <ChevronRight size={36} className="group-hover:translate-x-3 transition-transform duration-300" />
           </motion.button>
