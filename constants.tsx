@@ -7,8 +7,8 @@ import { ShieldCheck, Zap, TrendingUp, RotateCcw, Award } from 'lucide-react';
  * URL Google Sheet được chuyển đổi sang định dạng CSV để website có thể đọc được dữ liệu.
  * Dựa trên link: https://docs.google.com/spreadsheets/d/e/2PACX-1vRbNK9b5-GWuRl4yLJBBgXoEht-fZGugORleRU9_0zB5UOV7w9rcJ3OHWmTu_yqJJ5fKBvIcPtmADor/pubhtml?gid=0&single=true
  */
-export const LOGO_URL = "https://aistudio.google.com/_/upload/0ed2d710-b3a8-4220-911c-f5f720e3d2ab/attachment/1775539169.858624000/blobstore/prod/makersuite/spanner_managed/global::000054e2ea70026d:0000015f:2:000054e2ea70026d:0000000000000001::57c60d145fad0b16:000001f1d5a018bc:00064ed7ed7d69ef";
-export const HERO_BG_URL = "https://aistudio.google.com/_/upload/0ed2d710-b3a8-4220-911c-f5f720e3d2ab/attachment/1775540869.87420000/blobstore/prod/makersuite/spanner_managed/global::000054e2ea70026d:0000015f:2:000054e2ea70026d:0000000000000001::fe50090b3283345c:000001f1d5a018bc:00064ed852c6cdbf";
+export const LOGO_URL = "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?q=80&w=200&auto=format&fit=crop";
+export const HERO_BG_URL = "/bg-hero.jpg";
 
 export const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRbNK9b5-GWuRl4yLJBBgXoEht-fZGugORleRU9_0zB5UOV7w9rcJ3OHWmTu_yqJJ5fKBvIcPtmADor/pub?gid=0&single=true&output=csv";
 
@@ -49,10 +49,10 @@ export const WHY_US: WhyUsPoint[] = [
 ];
 
 export const REAL_PHOTOS = [
-  "https://aistudio.google.com/_/upload/0ed2d710-b3a8-4220-911c-f5f720e3d2ab/attachment/1775537147.244854000/blobstore/prod/makersuite/spanner_managed/global::000054e2ea70026d:0000015f:2:000054e2ea70026d:0000000000000001::6d4317c23a9e8d62:000001f1d5a018bc:00064ed774eb654f",
-  "https://aistudio.google.com/_/upload/0ed2d710-b3a8-4220-911c-f5f720e3d2ab/attachment/1775537147.244854000/blobstore/prod/makersuite/spanner_managed/global::000054e2ea70026d:0000015f:2:000054e2ea70026d:0000000000000001::f64381da5da2afa5:000001f1d5a018bc:00064ed774eb654f",
-  "https://aistudio.google.com/_/upload/0ed2d710-b3a8-4220-911c-f5f720e3d2ab/attachment/1775537147.244854000/blobstore/prod/makersuite/spanner_managed/global::000054e2ea70026d:0000015f:2:000054e2ea70026d:0000000000000001::5487576074dfa754:000001f1d5a018bc:00064ed774eb654f",
-  "https://aistudio.google.com/_/upload/0ed2d710-b3a8-4220-911c-f5f720e3d2ab/attachment/1775537147.244854000/blobstore/prod/makersuite/spanner_managed/global::000054e2ea70026d:0000015f:2:000054e2ea70026d:0000000000000001::32cb4cfe4b249f06:000001f1d5a018bc:00064ed774eb654f",
-  "https://aistudio.google.com/_/upload/0ed2d710-b3a8-4220-911c-f5f720e3d2ab/attachment/1775537147.244854000/blobstore/prod/makersuite/spanner_managed/global::000054e2ea70026d:0000015f:2:000054e2ea70026d:0000000000000001::1107a27c56659678:000001f1d5a018bc:00064ed774eb654f",
-  "https://aistudio.google.com/_/upload/0ed2d710-b3a8-4220-911c-f5f720e3d2ab/attachment/1775537147.244854000/blobstore/prod/makersuite/spanner_managed/global::000054e2ea70026d:0000015f:2:000054e2ea70026d:0000000000000001::87ff0c24015974b0:000001f1d5a018bc:00064ed774eb654f"
+  "/anh1.jpg",
+  "/anh2.jpg",
+  "/anh3.jpg",
+  "/anh4.jpg",
+  "/anh5.jpg",
+  "/anh6.jpg"
 ];
