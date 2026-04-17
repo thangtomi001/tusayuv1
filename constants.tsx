@@ -7,7 +7,7 @@ import { ShieldCheck, Zap, TrendingUp, RotateCcw, Award } from 'lucide-react';
  * URL Google Sheet được chuyển đổi sang định dạng CSV để website có thể đọc được dữ liệu.
  * Dựa trên link: https://docs.google.com/spreadsheets/d/e/2PACX-1vRbNK9b5-GWuRl4yLJBBgXoEht-fZGugORleRU9_0zB5UOV7w9rcJ3OHWmTu_yqJJ5fKBvIcPtmADor/pubhtml?gid=0&single=true
  */
-export const LOGO_URL = "https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?q=80&w=200&auto=format&fit=crop";
+export const LOGO_URL = "/logo.png";
 export const HERO_BG_URL = "/bg-hero.jpg";
 
 export const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRbNK9b5-GWuRl4yLJBBgXoEht-fZGugORleRU9_0zB5UOV7w9rcJ3OHWmTu_yqJJ5fKBvIcPtmADor/pub?gid=0&single=true&output=csv";
