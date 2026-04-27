@@ -187,7 +187,7 @@ const App: React.FC = () => {
           <div className="flex items-center gap-5 group cursor-pointer" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
             <div className="p-2 rounded-2xl transition-all duration-500 shadow-lg bg-white flex items-center justify-center w-14 h-14">
               {LOGO_URL ? (
-                <img src={LOGO_URL} alt="Logo" className="w-full h-full object-contain" referrerPolicy="no-referrer" />
+                <img src={LOGO_URL} alt="Logo" className="w-full h-full object-contain" />
               ) : (
                 <ShieldCheck className="text-[#EE4D2D] w-8 h-8" />
               )}
@@ -215,7 +215,7 @@ const App: React.FC = () => {
         <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
            {HERO_BG_URL ? (
              <>
-               <img src={HERO_BG_URL} alt="Background" className="w-full h-full object-cover opacity-60" referrerPolicy="no-referrer" />
+               <img src={HERO_BG_URL} alt="Background" className="w-full h-full object-cover opacity-60" />
                <div className="absolute inset-0 bg-gradient-to-b from-gray-950/80 via-gray-950/40 to-white"></div>
              </>
            ) : (
@@ -361,7 +361,6 @@ const App: React.FC = () => {
                   src={photo} 
                   alt={`Ảnh thực tế tủ sấy UV ${idx + 1}`} 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-100"
-                  referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </motion.div>
@@ -415,7 +414,7 @@ const App: React.FC = () => {
           <div className="flex items-center justify-center gap-6 mb-16 group cursor-pointer" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
             {LOGO_URL ? (
               <div className="w-20 h-20 bg-white rounded-2xl p-2 shadow-lg">
-                <img src={LOGO_URL} alt="Logo" className="w-full h-full object-contain" referrerPolicy="no-referrer" />
+                <img src={LOGO_URL} alt="Logo" className="w-full h-full object-contain" />
               </div>
             ) : (
               <ShieldCheck className="text-[#EE4D2D] w-16 h-16" />

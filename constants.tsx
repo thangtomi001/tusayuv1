@@ -3,12 +3,21 @@ import React from 'react';
 import { Product, WhyUsPoint } from './types';
 import { ShieldCheck, Zap, TrendingUp, RotateCcw, Award } from 'lucide-react';
 
+import logoImg from './public/logo.png';
+import heroImg from './public/bg-hero.jpg';
+import anh1Img from './public/anh1.jpg';
+import anh2Img from './public/anh2.jpg';
+import anh3Img from './public/anh3.jpg';
+import anh4Img from './public/anh4.jpg';
+import anh5Img from './public/anh5.jpg';
+import anh6Img from './public/anh6.jpg';
+
 /**
  * URL Google Sheet được chuyển đổi sang định dạng CSV để website có thể đọc được dữ liệu.
  * Dựa trên link: https://docs.google.com/spreadsheets/d/e/2PACX-1vRbNK9b5-GWuRl4yLJBBgXoEht-fZGugORleRU9_0zB5UOV7w9rcJ3OHWmTu_yqJJ5fKBvIcPtmADor/pubhtml?gid=0&single=true
  */
-export const LOGO_URL = "/logo.png";
-export const HERO_BG_URL = "/bg-hero.jpg";
+export const LOGO_URL = logoImg;
+export const HERO_BG_URL = heroImg;
 
 export const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRbNK9b5-GWuRl4yLJBBgXoEht-fZGugORleRU9_0zB5UOV7w9rcJ3OHWmTu_yqJJ5fKBvIcPtmADor/pub?gid=0&single=true&output=csv";
 
@@ -52,10 +61,10 @@ export const WHY_US: WhyUsPoint[] = [
 ];
 
 export const REAL_PHOTOS = [
-  "/anh1.jpg",
-  "/anh2.jpg",
-  "/anh3.jpg",
-  "/anh4.jpg",
-  "/anh5.jpg",
-  "/anh6.jpg"
+  anh1Img,
+  anh2Img,
+  anh3Img,
+  anh4Img,
+  anh5Img,
+  anh6Img
 ];
