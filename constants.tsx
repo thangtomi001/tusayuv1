@@ -12,6 +12,9 @@ export const HERO_BG_URL = "/bg-hero.jpg";
 
 export const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRbNK9b5-GWuRl4yLJBBgXoEht-fZGugORleRU9_0zB5UOV7w9rcJ3OHWmTu_yqJJ5fKBvIcPtmADor/pub?gid=0&single=true&output=csv";
 
+// ĐƯỜNG DẪN WEB APP TỪ GOOGLE APPS SCRIPT
+export const ORDER_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwTBXJpKQhdw7TElLYqW2e2dnqz7lbYEYLthgQdt_vvmtPfNemqncoEuekHCgnJyw9J/exec"; 
+
 export const PRODUCTS: Product[] = [
   {
     id: 'fallback-1',

@@ -6,9 +6,10 @@ import { motion } from 'motion/react';
 
 interface ProductCardProps {
   product: Product;
+  onClick: (product: Product) => void;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ product, onClick }) => {
   const [imgError, setImgError] = useState(false);
 
   const formatPrice = (price: number) => {
@@ -32,11 +33,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
   return (
     <motion.div 
+      onClick={() => onClick(product)}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5 }}
-      className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100 flex flex-col h-full relative"
+      className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100 flex flex-col h-full relative cursor-pointer"
     >
       <div className="relative aspect-square overflow-hidden bg-gray-50 flex items-center justify-center">
         {!imgError ? (
@@ -91,14 +93,16 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             )}
           </div>
           
-          <a 
-            href={product.affiliateUrl} 
-            target="_blank" 
-            rel="noopener noreferrer"
+          <button 
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              onClick(product);
+            }}
             className="w-full flex items-center justify-center gap-3 bg-[#EE4D2D] text-white py-4 rounded-2xl font-black text-xs md:text-sm hover:bg-gray-950 transition-all shadow-xl shadow-orange-100 active:scale-95 transform uppercase italic tracking-wider"
           >
             Mua Ngay <ExternalLink size={16} className="group-hover:translate-x-1 transition-transform" />
-          </a>
+          </button>
         </div>
       </div>
     </motion.div>

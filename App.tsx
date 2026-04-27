@@ -11,9 +11,11 @@ import {
   ArrowUp 
 } from 'lucide-react';
 import { motion } from 'motion/react';
+import Papa from 'papaparse';
 import { WHY_US, SHEET_CSV_URL, REAL_PHOTOS, LOGO_URL, HERO_BG_URL } from './constants';
 import { Category, Product, BadgeType } from './types';
 import ProductCard from './components/ProductCard';
+import ProductModal from './components/ProductModal';
 
 const App: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -21,6 +23,7 @@ const App: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<Category>('Tất cả');
   const [scrolled, setScrolled] = useState(false);
   const [lastUpdated, setLastUpdated] = useState<string>('');
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
   const CONTACT = {
     phone: "0369333910",
@@ -77,46 +80,68 @@ const App: React.FC = () => {
       const response = await fetch(`${SHEET_CSV_URL}&t=${new Date().getTime()}`);
       if (!response.ok) throw new Error('Không thể tải dữ liệu');
       const csvText = await response.text();
-      const lines = csvText.split(/\r?\n/);
-      const dataRows = lines.slice(1).filter(line => line.trim().length > 10); 
 
-      const parsedProducts: Product[] = dataRows
-        .map((line, index) => {
-          const columns = line.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
-          const clean = (val: string) => val?.replace(/^"|"$/g, '').trim() || '';
-          if (columns.length < 7) return null;
+      Papa.parse<string[]>(csvText, {
+        header: false,
+        skipEmptyLines: true,
+        complete: (results) => {
+          const dataRows = results.data.slice(1);
 
-          const category = clean(columns[0]) || 'Khác';
-          const name = clean(columns[1]);
-          const affiliateUrl = fixAffiliateUrl(clean(columns[3]));
-          const imageUrl = fixImageUrl(clean(columns[4]));
-          let original = parsePrice(clean(columns[5])); 
-          let discounted = parsePrice(clean(columns[6]));
+          const parsedProducts: Product[] = dataRows
+            .map((columns, index) => {
+              const clean = (val: string) => val?.trim() || '';
+              if (columns.length < 7) return null;
 
-          if (discounted === 0 && original > 0) discounted = original;
-          if (original === 0 && discounted > 0) original = discounted;
-          if (original > 0 && discounted > original) {
-            [original, discounted] = [discounted, original];
-          }
+              const category = clean(columns[0]) || 'Khác';
+              const name = clean(columns[1]);
+              const affiliateUrl = fixAffiliateUrl(clean(columns[3]));
+              const imageUrl = fixImageUrl(clean(columns[4]));
+              let original = parsePrice(clean(columns[5])); 
+              let discounted = parsePrice(clean(columns[6]));
 
-          const badges: BadgeType[] = [];
-          if (discounted < original) badges.push('Giảm sâu');
+              const specifications = columns.length > 7 ? clean(columns[7]) : 'Thông số kỹ thuật chi tiết đang được cập nhật...';
+              const features = columns.length > 8 ? clean(columns[8]) : 'Các chức năng nổi bật của sản phẩm đang được cập nhật...';
+              const additionalImagesStr = columns.length > 9 ? clean(columns[9]) : '';
+              const additionalImages = additionalImagesStr 
+                ? additionalImagesStr.split(',').map(u => fixImageUrl(u)) 
+                : [
+                    "https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=800&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?q=80&w=800&auto=format&fit=crop"
+                  ]; // Default dummy images for now
 
-          return {
-            id: `p-${index}`,
-            name,
-            category,
-            originalPrice: original,
-            discountedPrice: discounted,
-            imageUrl,
-            affiliateUrl,
-            badges
-          };
-        })
-        .filter((p): p is Product => p !== null && p.name !== '');
+              if (discounted === 0 && original > 0) discounted = original;
+              if (original === 0 && discounted > 0) original = discounted;
+              if (original > 0 && discounted > original) {
+                [original, discounted] = [discounted, original];
+              }
 
-      setProducts(parsedProducts);
-      setLastUpdated(new Date().toLocaleTimeString('vi-VN'));
+              const badges: BadgeType[] = [];
+              if (discounted < original) badges.push('Giảm sâu');
+
+              const prod: Product = {
+                id: `p-${index}`,
+                name,
+                category,
+                originalPrice: original,
+                discountedPrice: discounted,
+                imageUrl,
+                affiliateUrl,
+                badges,
+                specifications,
+                features,
+                additionalImages
+              };
+              return prod;
+            })
+            .filter((p): p is Product => p !== null && p.name !== '');
+
+          setProducts(parsedProducts);
+          setLastUpdated(new Date().toLocaleTimeString('vi-VN'));
+        },
+        error: (error: Error) => {
+          console.error("Lỗi parse CSV:", error);
+        }
+      });
     } catch (err) {
       console.error("Lỗi đồng bộ:", err);
     } finally {
@@ -297,7 +322,7 @@ const App: React.FC = () => {
           ) : (
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10 md:gap-14">
               {filteredProducts.map((product) => (
-                <ProductCard key={product.id} product={product} />
+                <ProductCard key={product.id} product={product} onClick={setSelectedProduct} />
               ))}
             </div>
           )}
@@ -450,6 +475,9 @@ const App: React.FC = () => {
           <Phone size={28} className="md:w-8 md:h-8" />
         </div>
       </a>
+
+      {/* Product Details Modal */}
+      <ProductModal product={selectedProduct} onClose={() => setSelectedProduct(null)} />
     </div>
   );
 };

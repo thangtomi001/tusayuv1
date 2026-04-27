@@ -14,6 +14,9 @@ export interface Product {
   imageUrl: string;
   affiliateUrl: string;
   badges: BadgeType[];
+  specifications?: string;
+  features?: string;
+  additionalImages?: string[];
 }
 
 export interface WhyUsPoint {
