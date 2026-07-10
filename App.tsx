@@ -424,7 +424,7 @@ const App: React.FC = () => {
             </span>
           </div>
           <p className="text-xl md:text-2xl opacity-60 mb-20 italic max-w-5xl mx-auto leading-[1.8] tracking-normal">
-            Mạng lưới phân phối tủ sấy tiệt trùng UV hàng đầu Việt Nam. <br className="hidden md:block"/> Cam kết sản phẩm đạt chuẩn y tế & mức giá tối ưu nhất cho đối tác.
+            Mạng lưới phân phối tủ sấy tiệt trùng UV hàng đầu Việt Nam. <br className="hidden md:block"/> Cam kết sản phẩm chính hãng, chất lượng cao & mức giá tối ưu nhất cho đối tác.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-20 text-center">
