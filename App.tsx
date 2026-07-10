@@ -253,8 +253,8 @@ const App: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-gray-200 text-lg md:text-2xl max-w-4xl mx-auto mb-20 leading-[1.8] font-medium italic px-6 opacity-90"
           >
-            Phân phối sỉ lẻ thiết bị tiệt trùng tia cực tím chuyên dụng <br className="hidden md:block"/> 
-            cho gia đình, nhà hàng, Spa & cơ sở y tế.
+            Phân phối sỉ lẻ tủ sấy tia cực tím đa năng <br className="hidden md:block"/> 
+            cho phòng khám và Spa.
           </motion.p>
           
           <motion.button 
