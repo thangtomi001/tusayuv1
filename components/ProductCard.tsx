@@ -76,18 +76,18 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onClick }) => {
         </h3>
         
         <div className="mt-auto">
-          <div className="flex flex-col mb-5 min-h-[56px] justify-end">
+          <div className="flex flex-col mb-4 sm:mb-5 min-h-[48px] sm:min-h-[56px] justify-end">
             {isSale ? (
               <>
-                <span className="text-[11px] md:text-xs text-gray-400 line-through font-semibold opacity-60 tracking-tighter">
+                <span className="text-[10px] sm:text-[11px] md:text-xs text-gray-400 line-through font-semibold opacity-60 tracking-tighter">
                   {formatPrice(product.originalPrice)}
                 </span>
-                <div className="text-lg md:text-2xl font-black text-[#EE4D2D] tracking-tighter italic leading-none mt-2">
+                <div className="text-lg sm:text-xl md:text-2xl font-black text-[#EE4D2D] tracking-tighter italic leading-none mt-1 sm:mt-2">
                   {formatPrice(product.discountedPrice)}
                 </div>
               </>
             ) : (
-              <div className="text-lg md:text-2xl font-black text-gray-900 tracking-tighter italic leading-none">
+              <div className="text-lg sm:text-xl md:text-2xl font-black text-gray-900 tracking-tighter italic leading-none">
                 {formatPrice(product.discountedPrice || product.originalPrice)}
               </div>
             )}
@@ -99,9 +99,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onClick }) => {
               e.stopPropagation();
               onClick(product);
             }}
-            className="w-full flex items-center justify-center gap-3 bg-[#EE4D2D] text-white py-4 rounded-2xl font-black text-xs md:text-sm hover:bg-gray-950 transition-all shadow-xl shadow-orange-100 active:scale-95 transform uppercase italic tracking-wider"
+            className="w-full flex items-center justify-center gap-2 sm:gap-3 bg-[#EE4D2D] text-white py-3 sm:py-4 rounded-xl sm:rounded-2xl font-black text-[10px] sm:text-xs md:text-sm hover:bg-gray-950 transition-all shadow-xl shadow-orange-100 active:scale-95 transform uppercase italic tracking-wider"
           >
-            Mua Ngay <ExternalLink size={16} className="group-hover:translate-x-1 transition-transform" />
+            Mua Ngay <ExternalLink size={14} className="sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
       </div>

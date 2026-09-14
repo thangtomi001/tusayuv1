@@ -162,16 +162,16 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
                 <div className="text-xs font-black text-gray-400 uppercase tracking-widest mb-3">
                   {product.category}
                 </div>
-                <h2 className="text-2xl md:text-4xl font-black text-gray-900 leading-tight tracking-tight mb-6">
+                <h2 className="text-xl sm:text-2xl md:text-4xl font-black text-gray-900 leading-tight tracking-tight mb-4 sm:mb-6">
                   {product.name}
                 </h2>
                 
-                <div className="flex items-end gap-4 mb-8 pb-8 border-b border-gray-100">
-                  <div className="text-3xl md:text-5xl font-black text-[#EE4D2D] tracking-tighter italic">
+                <div className="flex items-end gap-3 sm:gap-4 mb-6 sm:mb-8 pb-6 sm:pb-8 border-b border-gray-100">
+                  <div className="text-2xl sm:text-3xl md:text-5xl font-black text-[#EE4D2D] tracking-tighter italic">
                     {formatPrice(product.discountedPrice)}
                   </div>
                   {isSale && (
-                    <div className="text-lg md:text-xl text-gray-400 font-bold line-through opacity-60 mb-1">
+                    <div className="text-base sm:text-lg md:text-xl text-gray-400 font-bold line-through opacity-60 mb-0.5 sm:mb-1">
                       {formatPrice(product.originalPrice)}
                     </div>
                   )}
@@ -275,36 +275,36 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
                     {/* Left: Input Form */}
                     <form id="orderForm" onSubmit={handleOrderSubmit} className="flex-1 space-y-6">
                       <div>
-                        <label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wide">Họ và tên *</label>
+                        <label className="block text-xs sm:text-sm font-bold text-gray-700 mb-1.5 sm:mb-2 uppercase tracking-wide">Họ và tên *</label>
                         <input 
                           type="text" 
                           required
                           value={formData.name}
                           onChange={(e) => setFormData({...formData, name: e.target.value})}
                           placeholder="Nhập tên của bạn"
-                          className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#EE4D2D]/20 focus:border-[#EE4D2D] transition-all font-medium"
+                          className="w-full px-4 sm:px-5 py-3 sm:py-4 bg-gray-50 border border-gray-200 rounded-xl sm:rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#EE4D2D]/20 focus:border-[#EE4D2D] transition-all font-medium text-sm sm:text-base"
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wide">Số điện thoại *</label>
+                        <label className="block text-xs sm:text-sm font-bold text-gray-700 mb-1.5 sm:mb-2 uppercase tracking-wide">Số điện thoại *</label>
                         <input 
                           type="tel" 
                           required
                           value={formData.phone}
                           onChange={(e) => setFormData({...formData, phone: e.target.value})}
                           placeholder="Nhập số điện thoại liên hệ"
-                          className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#EE4D2D]/20 focus:border-[#EE4D2D] transition-all font-medium"
+                          className="w-full px-4 sm:px-5 py-3 sm:py-4 bg-gray-50 border border-gray-200 rounded-xl sm:rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#EE4D2D]/20 focus:border-[#EE4D2D] transition-all font-medium text-sm sm:text-base"
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wide">Địa chỉ nhận hàng *</label>
+                        <label className="block text-xs sm:text-sm font-bold text-gray-700 mb-1.5 sm:mb-2 uppercase tracking-wide">Địa chỉ nhận hàng *</label>
                         <textarea 
                           required
                           rows={3}
                           value={formData.address}
                           onChange={(e) => setFormData({...formData, address: e.target.value})}
                           placeholder="Nhập số nhà, tên đường, phường/xã, quận/huyện, tỉnh/thành phố"
-                          className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#EE4D2D]/20 focus:border-[#EE4D2D] transition-all font-medium resize-none"
+                          className="w-full px-4 sm:px-5 py-3 sm:py-4 bg-gray-50 border border-gray-200 rounded-xl sm:rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#EE4D2D]/20 focus:border-[#EE4D2D] transition-all font-medium resize-none text-sm sm:text-base"
                         ></textarea>
                       </div>
                     </form>
@@ -362,9 +362,9 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
                </div>
                <button 
                   onClick={() => setShowOrderForm(true)}
-                  className="w-full md:w-auto flex-1 md:flex-none flex items-center justify-center gap-3 bg-[#EE4D2D] text-white px-12 py-5 rounded-[1.5rem] font-black text-base hover:bg-[#d64124] transition-all shadow-xl shadow-orange-200 active:scale-95 transform uppercase italic tracking-wider"
+                  className="w-full md:w-auto flex-1 md:flex-none flex items-center justify-center gap-2 sm:gap-3 bg-[#EE4D2D] text-white px-8 sm:px-12 py-4 sm:py-5 rounded-xl sm:rounded-[1.5rem] font-black text-sm sm:text-base hover:bg-[#d64124] transition-all shadow-xl shadow-orange-200 active:scale-95 transform uppercase italic tracking-wider"
                 >
-                  Mua Ngay <ChevronRight size={20} className="group-hover:translate-x-1" />
+                  Mua Ngay <ChevronRight size={20} className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1" />
                 </button>
              </motion.div>
 
@@ -379,12 +379,12 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
                   form="orderForm"
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full flex items-center justify-center gap-3 bg-[#EE4D2D] text-white px-12 py-5 rounded-[1.5rem] font-black text-base hover:bg-[#d64124] transition-all shadow-xl shadow-orange-200 active:scale-95 transform uppercase italic tracking-wider disabled:opacity-70 disabled:pointer-events-none"
+                  className="w-full flex items-center justify-center gap-2 sm:gap-3 bg-[#EE4D2D] text-white px-8 sm:px-12 py-4 sm:py-5 rounded-xl sm:rounded-[1.5rem] font-black text-sm sm:text-base hover:bg-[#d64124] transition-all shadow-xl shadow-orange-200 active:scale-95 transform uppercase italic tracking-wider disabled:opacity-70 disabled:pointer-events-none"
                 >
                   {isSubmitting ? (
-                    <>Đang Gửi <Loader2 size={20} className="animate-spin" /></>
+                    <>Đang Gửi <Loader2 size={20} className="w-4 h-4 sm:w-5 sm:h-5 animate-spin" /></>
                   ) : (
-                    <>Gửi Yêu Cầu Đặt Hàng <ChevronRight size={20} className="group-hover:translate-x-1" /></>
+                    <>Gửi Yêu Cầu Đặt Hàng <ChevronRight size={20} className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1" /></>
                   )}
                 </button>
              </motion.div>
