@@ -102,13 +102,13 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           transition={{ type: "spring", damping: 25, stiffness: 300 }}
-          className="relative w-full max-w-5xl max-h-[90vh] bg-white rounded-[2rem] md:rounded-[3rem] shadow-2xl flex flex-col overflow-hidden"
+          className="relative w-full max-w-5xl max-h-[90vh] bg-white dark:bg-gray-900 rounded-[2rem] md:rounded-[3rem] shadow-2xl flex flex-col overflow-hidden"
           onClick={(e) => e.stopPropagation()}
         >
           {/* Close Button */}
           <button 
             onClick={handleClose}
-            className="absolute top-4 right-4 md:top-6 md:right-6 z-20 bg-white/80 backdrop-blur-md p-2.5 rounded-full text-gray-500 hover:text-gray-950 hover:bg-gray-100 transition-colors shadow-sm"
+            className="absolute top-4 right-4 md:top-6 md:right-6 z-20 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md p-2.5 rounded-full text-gray-500 dark:text-gray-400 hover:text-gray-950 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors shadow-sm"
           >
             <X size={24} />
           </button>
@@ -122,8 +122,8 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
               className="w-full flex-shrink-0 flex flex-col md:flex-row min-h-full"
             >
               {/* Left Column: Images */}
-              <div className="w-full md:w-1/2 bg-gray-50 p-6 md:p-10 flex flex-col gap-6">
-                <div className="aspect-square bg-white rounded-3xl overflow-hidden shadow-sm flex items-center justify-center relative p-4 group">
+              <div className="w-full md:w-1/2 bg-gray-50 dark:bg-gray-800/50 p-6 md:p-10 flex flex-col gap-6">
+                <div className="aspect-square bg-white dark:bg-gray-800 rounded-3xl overflow-hidden shadow-sm flex items-center justify-center relative p-4 group">
                   <img 
                     src={currentMainImage} 
                     alt={product.name} 
@@ -146,8 +146,8 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
                       <button 
                         key={idx}
                         onClick={() => setMainImage(img)}
-                        className={`flex-shrink-0 w-20 h-20 bg-white rounded-2xl p-2 border-2 transition-all overflow-hidden ${
-                          currentMainImage === img ? 'border-[#EE4D2D] shadow-md' : 'border-transparent hover:border-orange-200'
+                        className={`flex-shrink-0 w-20 h-20 bg-white dark:bg-gray-800 rounded-2xl p-2 border-2 transition-all overflow-hidden ${
+                          currentMainImage === img ? 'border-[#EE4D2D] shadow-md' : 'border-transparent hover:border-orange-200 dark:hover:border-gray-600'
                         }`}
                       >
                         <img src={img} alt={`Thumb ${idx}`} className="w-full h-full object-contain" referrerPolicy="no-referrer" />
@@ -162,11 +162,11 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
                 <div className="text-xs font-black text-gray-400 uppercase tracking-widest mb-3">
                   {product.category}
                 </div>
-                <h2 className="text-xl sm:text-2xl md:text-4xl font-black text-gray-900 leading-tight tracking-tight mb-4 sm:mb-6">
+                <h2 className="text-xl sm:text-2xl md:text-4xl font-black text-gray-900 dark:text-white leading-tight tracking-tight mb-4 sm:mb-6">
                   {product.name}
                 </h2>
                 
-                <div className="flex items-end gap-3 sm:gap-4 mb-6 sm:mb-8 pb-6 sm:pb-8 border-b border-gray-100">
+                <div className="flex items-end gap-3 sm:gap-4 mb-6 sm:mb-8 pb-6 sm:pb-8 border-b border-gray-100 dark:border-gray-800">
                   <div className="text-2xl sm:text-3xl md:text-5xl font-black text-[#EE4D2D] tracking-tighter italic">
                     {formatPrice(product.discountedPrice)}
                   </div>
@@ -178,11 +178,11 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
                 </div>
 
                 {/* Tabs */}
-                <div className="flex gap-6 border-b border-gray-200 mb-6">
+                <div className="flex gap-6 border-b border-gray-200 dark:border-gray-800 mb-6">
                   <button 
                     onClick={() => setActiveTab('specs')}
                     className={`pb-3 font-bold text-sm md:text-base uppercase tracking-wider transition-colors border-b-2 ${
-                      activeTab === 'specs' ? 'border-[#EE4D2D] text-[#EE4D2D]' : 'border-transparent text-gray-400 hover:text-gray-600'
+                      activeTab === 'specs' ? 'border-[#EE4D2D] text-[#EE4D2D]' : 'border-transparent text-gray-400 hover:text-gray-600 dark:hover:text-gray-200'
                     }`}
                   >
                     Thông số kỹ thuật
@@ -190,7 +190,7 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
                   <button 
                     onClick={() => setActiveTab('features')}
                     className={`pb-3 font-bold text-sm md:text-base uppercase tracking-wider transition-colors border-b-2 ${
-                      activeTab === 'features' ? 'border-[#EE4D2D] text-[#EE4D2D]' : 'border-transparent text-gray-400 hover:text-gray-600'
+                      activeTab === 'features' ? 'border-[#EE4D2D] text-[#EE4D2D]' : 'border-transparent text-gray-400 hover:text-gray-600 dark:hover:text-gray-200'
                     }`}
                   >
                     Chức năng nổi bật
@@ -198,7 +198,7 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
                 </div>
 
                 {/* Content */}
-                <div className="flex-1 text-gray-600 font-medium leading-relaxed rounded-2xl bg-gray-50 p-6 shadow-inner text-sm md:text-base mb-8">
+                <div className="flex-1 text-gray-600 dark:text-gray-300 font-medium leading-relaxed rounded-2xl bg-gray-50 dark:bg-gray-800/50 p-6 shadow-inner text-sm md:text-base mb-8">
                   {activeTab === 'specs' ? (
                     <div className="whitespace-pre-line">
                       {product.specifications || (
@@ -211,15 +211,15 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
                         product.features.split('\n').map((line, i) => (
                            <div key={i} className="flex gap-3 items-start">
                              <CheckCircle2 size={18} className="text-[#EE4D2D] shrink-0 mt-0.5" />
-                             <span className="text-gray-700">{line.replace(/^- /, '')}</span>
+                             <span className="text-gray-700 dark:text-gray-300">{line.replace(/^- /, '')}</span>
                            </div>
                         ))
                       ) : (
                         <>
-                          <div className="flex gap-3"><CheckCircle2 size={18} className="text-[#EE4D2D] shrink-0 mt-0.5" /><span>Tiệt trùng 99.9% bằng tia UV công nghệ mới.</span></div>
-                          <div className="flex gap-3"><CheckCircle2 size={18} className="text-[#EE4D2D] shrink-0 mt-0.5" /><span>Sấy khô tuần hoàn tự động, không lo đọng nước.</span></div>
-                          <div className="flex gap-3"><CheckCircle2 size={18} className="text-[#EE4D2D] shrink-0 mt-0.5" /><span>Màn hình cảm ứng hiện đại, dễ thao tác.</span></div>
-                          <div className="flex gap-3"><CheckCircle2 size={18} className="text-[#EE4D2D] shrink-0 mt-0.5" /><span>Thiết kế sang trọng, tối ưu không gian lưu trữ.</span></div>
+                          <div className="flex gap-3"><CheckCircle2 size={18} className="text-[#EE4D2D] shrink-0 mt-0.5" /><span className="text-gray-700 dark:text-gray-300">Tiệt trùng 99.9% bằng tia UV công nghệ mới.</span></div>
+                          <div className="flex gap-3"><CheckCircle2 size={18} className="text-[#EE4D2D] shrink-0 mt-0.5" /><span className="text-gray-700 dark:text-gray-300">Sấy khô tuần hoàn tự động, không lo đọng nước.</span></div>
+                          <div className="flex gap-3"><CheckCircle2 size={18} className="text-[#EE4D2D] shrink-0 mt-0.5" /><span className="text-gray-700 dark:text-gray-300">Màn hình cảm ứng hiện đại, dễ thao tác.</span></div>
+                          <div className="flex gap-3"><CheckCircle2 size={18} className="text-[#EE4D2D] shrink-0 mt-0.5" /><span className="text-gray-700 dark:text-gray-300">Thiết kế sang trọng, tối ưu không gian lưu trữ.</span></div>
                         </>
                       )}
                     </div>
@@ -227,7 +227,7 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
                 </div>
 
                 {/* Guarantee */}
-                <div className="flex items-center gap-3 bg-green-50 text-green-700 p-4 rounded-2xl mb-6 text-sm font-bold">
+                <div className="flex items-center gap-3 bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-400 p-4 rounded-2xl mb-6 text-sm font-bold">
                   <ShieldCheck size={20} className="shrink-0" />
                   Cam kết hàng chính hãng 100%. Bảo hành theo tiêu chuẩn nhà sản xuất.
                 </div>
@@ -238,34 +238,34 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
             <motion.div 
               animate={{ x: showOrderForm ? '-100%' : '0%' }}
               transition={{ ease: "easeInOut", duration: 0.4 }}
-              className="w-full flex-shrink-0 bg-white p-6 md:p-10 flex flex-col h-full"
+              className="w-full flex-shrink-0 bg-white dark:bg-gray-900 p-6 md:p-10 flex flex-col h-full"
             >
-              <div className="flex items-center mb-8 pb-6 border-b border-gray-100">
+              <div className="flex items-center mb-8 pb-6 border-b border-gray-100 dark:border-gray-800">
                 <button 
                   onClick={() => setShowOrderForm(false)}
-                  className="mr-4 p-2 bg-gray-50 rounded-full hover:bg-gray-100 transition-colors text-gray-500 hover:text-gray-900"
+                  className="mr-4 p-2 bg-gray-50 dark:bg-gray-800 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                 >
                   <ArrowLeft size={24} />
                 </button>
                 <div>
-                  <h2 className="text-2xl md:text-3xl font-black text-gray-900">Thông tin mua hàng</h2>
-                  <p className="text-gray-500 font-medium mt-1">Điền thông tin để nhân viên tư vấn gọi lại xác nhận đơn hàng</p>
+                  <h2 className="text-2xl md:text-3xl font-black text-gray-900 dark:text-white">Thông tin mua hàng</h2>
+                  <p className="text-gray-500 dark:text-gray-400 font-medium mt-1">Điền thông tin để nhân viên tư vấn gọi lại xác nhận đơn hàng</p>
                 </div>
               </div>
 
               <div className="flex flex-col md:flex-row gap-8 md:gap-12 flex-1">
                 {submitSuccess ? (
-                  <div className="flex-1 flex flex-col items-center justify-center text-center p-8 bg-green-50 rounded-[2rem] border border-green-100 h-[400px]">
-                    <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-6">
+                  <div className="flex-1 flex flex-col items-center justify-center text-center p-8 bg-green-50 dark:bg-green-900/20 rounded-[2rem] border border-green-100 dark:border-green-900/30 h-[400px]">
+                    <div className="w-20 h-20 bg-green-100 dark:bg-green-900/50 text-green-600 dark:text-green-400 rounded-full flex items-center justify-center mb-6">
                       <CheckCircle size={40} />
                     </div>
-                    <h3 className="text-2xl font-black text-gray-900 mb-2">Đặt hàng thành công!</h3>
-                    <p className="text-gray-600 max-w-md mx-auto">
+                    <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-2">Đặt hàng thành công!</h3>
+                    <p className="text-gray-600 dark:text-gray-300 max-w-md mx-auto">
                       Cảm ơn bạn đã quan tâm. Thông tin của bạn đã được ghi nhận. Nhân viên tư vấn sẽ liên hệ lại với bạn trong thời gian sớm nhất qua số điện thoại <strong>{formData.phone}</strong>.
                     </p>
                     <button 
                       onClick={handleClose}
-                      className="mt-8 px-8 py-3 bg-gray-900 text-white rounded-xl font-bold hover:bg-gray-800 transition-colors"
+                      className="mt-8 px-8 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-xl font-bold hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors"
                     >
                       Tiếp tục mua sắm
                     </button>
@@ -275,68 +275,68 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
                     {/* Left: Input Form */}
                     <form id="orderForm" onSubmit={handleOrderSubmit} className="flex-1 space-y-6">
                       <div>
-                        <label className="block text-xs sm:text-sm font-bold text-gray-700 mb-1.5 sm:mb-2 uppercase tracking-wide">Họ và tên *</label>
+                        <label className="block text-xs sm:text-sm font-bold text-gray-700 dark:text-gray-300 mb-1.5 sm:mb-2 uppercase tracking-wide">Họ và tên *</label>
                         <input 
                           type="text" 
                           required
                           value={formData.name}
                           onChange={(e) => setFormData({...formData, name: e.target.value})}
                           placeholder="Nhập tên của bạn"
-                          className="w-full px-4 sm:px-5 py-3 sm:py-4 bg-gray-50 border border-gray-200 rounded-xl sm:rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#EE4D2D]/20 focus:border-[#EE4D2D] transition-all font-medium text-sm sm:text-base"
+                          className="w-full px-4 sm:px-5 py-3 sm:py-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl sm:rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#EE4D2D]/20 focus:border-[#EE4D2D] transition-all font-medium text-sm sm:text-base text-gray-900 dark:text-white"
                         />
                       </div>
                       <div>
-                        <label className="block text-xs sm:text-sm font-bold text-gray-700 mb-1.5 sm:mb-2 uppercase tracking-wide">Số điện thoại *</label>
+                        <label className="block text-xs sm:text-sm font-bold text-gray-700 dark:text-gray-300 mb-1.5 sm:mb-2 uppercase tracking-wide">Số điện thoại *</label>
                         <input 
                           type="tel" 
                           required
                           value={formData.phone}
                           onChange={(e) => setFormData({...formData, phone: e.target.value})}
                           placeholder="Nhập số điện thoại liên hệ"
-                          className="w-full px-4 sm:px-5 py-3 sm:py-4 bg-gray-50 border border-gray-200 rounded-xl sm:rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#EE4D2D]/20 focus:border-[#EE4D2D] transition-all font-medium text-sm sm:text-base"
+                          className="w-full px-4 sm:px-5 py-3 sm:py-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl sm:rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#EE4D2D]/20 focus:border-[#EE4D2D] transition-all font-medium text-sm sm:text-base text-gray-900 dark:text-white"
                         />
                       </div>
                       <div>
-                        <label className="block text-xs sm:text-sm font-bold text-gray-700 mb-1.5 sm:mb-2 uppercase tracking-wide">Địa chỉ nhận hàng *</label>
+                        <label className="block text-xs sm:text-sm font-bold text-gray-700 dark:text-gray-300 mb-1.5 sm:mb-2 uppercase tracking-wide">Địa chỉ nhận hàng *</label>
                         <textarea 
                           required
                           rows={3}
                           value={formData.address}
                           onChange={(e) => setFormData({...formData, address: e.target.value})}
                           placeholder="Nhập số nhà, tên đường, phường/xã, quận/huyện, tỉnh/thành phố"
-                          className="w-full px-4 sm:px-5 py-3 sm:py-4 bg-gray-50 border border-gray-200 rounded-xl sm:rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#EE4D2D]/20 focus:border-[#EE4D2D] transition-all font-medium resize-none text-sm sm:text-base"
+                          className="w-full px-4 sm:px-5 py-3 sm:py-4 bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl sm:rounded-2xl focus:outline-none focus:ring-2 focus:ring-[#EE4D2D]/20 focus:border-[#EE4D2D] transition-all font-medium resize-none text-sm sm:text-base text-gray-900 dark:text-white"
                         ></textarea>
                       </div>
                     </form>
 
                     {/* Right: Order Summary */}
-                    <div className="w-full md:w-[350px] bg-gray-50 p-6 md:p-8 rounded-[2rem] h-fit">
-                      <h3 className="font-bold text-lg text-gray-900 mb-6 uppercase tracking-wider flex items-center gap-2">
+                    <div className="w-full md:w-[350px] bg-gray-50 dark:bg-gray-800/50 p-6 md:p-8 rounded-[2rem] h-fit">
+                      <h3 className="font-bold text-lg text-gray-900 dark:text-white mb-6 uppercase tracking-wider flex items-center gap-2">
                         <ShoppingCart size={20} className="text-[#EE4D2D]" />
                         Tóm tắt đơn hàng
                       </h3>
                       
                       <div className="flex gap-4 mb-6">
-                        <div className="w-20 h-20 bg-white rounded-xl overflow-hidden shadow-sm flex-shrink-0 p-1">
+                        <div className="w-20 h-20 bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-sm flex-shrink-0 p-1">
                           <img src={currentMainImage} alt={product.name} className="w-full h-full object-contain" referrerPolicy="no-referrer" />
                         </div>
                         <div className="flex flex-col justify-center">
-                          <div className="font-bold text-gray-900 leading-tight line-clamp-2">{product.name}</div>
-                          <div className="text-gray-500 text-sm mt-1">Số lượng: 1</div>
+                          <div className="font-bold text-gray-900 dark:text-white leading-tight line-clamp-2">{product.name}</div>
+                          <div className="text-gray-500 dark:text-gray-400 text-sm mt-1">Số lượng: 1</div>
                         </div>
                       </div>
 
-                      <div className="space-y-4 border-t border-gray-200 pt-6">
-                        <div className="flex justify-between text-gray-600 font-medium">
+                      <div className="space-y-4 border-t border-gray-200 dark:border-gray-700 pt-6">
+                        <div className="flex justify-between text-gray-600 dark:text-gray-300 font-medium">
                           <span>Tạm tính</span>
                           <span>{formatPrice(product.discountedPrice)}</span>
                         </div>
-                        <div className="flex justify-between text-gray-600 font-medium">
+                        <div className="flex justify-between text-gray-600 dark:text-gray-300 font-medium">
                           <span>Phí vận chuyển</span>
-                          <span className="text-green-600 font-bold">Miễn phí</span>
+                          <span className="text-green-600 dark:text-green-400 font-bold">Miễn phí</span>
                         </div>
-                        <div className="flex justify-between items-end border-t border-gray-200 mt-4 pt-6">
-                          <span className="text-gray-900 font-bold uppercase tracking-wider">Tổng cộng</span>
+                        <div className="flex justify-between items-end border-t border-gray-200 dark:border-gray-700 mt-4 pt-6">
+                          <span className="text-gray-900 dark:text-white font-bold uppercase tracking-wider">Tổng cộng</span>
                           <span className="text-2xl md:text-3xl font-black text-[#EE4D2D] italic">{formatPrice(product.discountedPrice)}</span>
                         </div>
                       </div>
@@ -348,7 +348,7 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
           </div>
 
           {/* Sticky Footer CTA */}
-          <div className="bg-white border-t border-gray-100 p-4 md:p-6 flex justify-between items-center z-10 shrink-0 relative overflow-hidden">
+          <div className="bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 p-4 md:p-6 flex justify-between items-center z-10 shrink-0 relative overflow-hidden">
              
              {/* Product Details Footer Content */}
              <motion.div 
@@ -358,7 +358,7 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
              >
                <div className="hidden md:block">
                  <div className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Tổng cộng:</div>
-                 <div className="text-xl font-black text-gray-950 italic">{formatPrice(product.discountedPrice)}</div>
+                 <div className="text-xl font-black text-gray-950 dark:text-white italic">{formatPrice(product.discountedPrice)}</div>
                </div>
                <button 
                   onClick={() => setShowOrderForm(true)}
@@ -370,7 +370,7 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
 
              {/* Order Form Footer Content */}
              <motion.div 
-               className="absolute inset-0 w-full h-full p-4 md:p-6 flex items-center bg-white"
+               className="absolute inset-0 w-full h-full p-4 md:p-6 flex items-center bg-white dark:bg-gray-900"
                initial={{ y: '200%', opacity: 0 }}
                animate={{ y: showOrderForm && !submitSuccess ? '0%' : '200%', opacity: showOrderForm && !submitSuccess ? 1 : 0 }}
                transition={{ ease: "easeInOut", duration: 0.3 }}

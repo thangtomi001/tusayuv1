@@ -5,15 +5,15 @@ import { X, Plus } from 'lucide-react';
 const FAQS = [
   {
     question: 'Nhiệt độ 105°C ở ngăn dưới có "đạt tiệt trùng" không? Có loại cao hơn không?',
-    answer: 'Dạ đúng, ngăn dưới sấy khô tối đa 105°C. Cần nói rõ: tủ này <span class="font-bold text-white">không phải máy tiệt trùng thay thế nồi hấp/autoclave</span>. Vai trò đúng là sau khi dụng cụ đã được tiệt trùng bằng thiết bị chuyên dụng, cho vào tủ sấy khô hoàn toàn, có UV+Ozone hỗ trợ khử khuẩn bề mặt, rồi bảo quản khô ráo trước khi dùng lại. Có dòng công nghiệp cỡ lớn nhiệt độ cao hơn cho khối lượng lớn — gọi hotline để được tư vấn đúng nhu cầu.'
+    answer: 'Dạ đúng, ngăn dưới sấy khô tối đa 105°C. Cần nói rõ: tủ này <span class="font-bold text-gray-900 dark:text-white">không phải máy tiệt trùng thay thế nồi hấp/autoclave</span>. Vai trò đúng là sau khi dụng cụ đã được tiệt trùng bằng thiết bị chuyên dụng, cho vào tủ sấy khô hoàn toàn, có UV+Ozone hỗ trợ khử khuẩn bề mặt, rồi bảo quản khô ráo trước khi dùng lại. Có dòng công nghiệp cỡ lớn nhiệt độ cao hơn cho khối lượng lớn — gọi hotline để được tư vấn đúng nhu cầu.'
   },
   {
     question: 'Mẫu RN65 để bàn có sấy và khử khuẩn cùng lúc không?',
-    answer: 'Có 3 chế độ để chọn: <span class="font-bold text-white">chỉ sấy khô</span>, <span class="font-bold text-white">chỉ UV+Ozone</span>, hoặc <span class="font-bold text-white">tự động cả hai liên tiếp</span>. Khác với dòng đứng 2 ngăn chạy đồng thời 2 mức nhiệt riêng biệt, RN65 gọn hơn, phù hợp nơi ít dụng cụ.'
+    answer: 'Có 3 chế độ để chọn: <span class="font-bold text-gray-900 dark:text-white">chỉ sấy khô</span>, <span class="font-bold text-gray-900 dark:text-white">chỉ UV+Ozone</span>, hoặc <span class="font-bold text-gray-900 dark:text-white">tự động cả hai liên tiếp</span>. Khác với dòng đứng 2 ngăn chạy đồng thời 2 mức nhiệt riêng biệt, RN65 gọn hơn, phù hợp nơi ít dụng cụ.'
   },
   {
     question: 'Chưa biết chọn mẫu nào — dựa vào đâu để chọn đúng?',
-    answer: 'Chọn theo số ghế/khối lượng dụng cụ: <span class="font-bold text-white">1-2 ghế → RN65</span>, <span class="font-bold text-white">2-3 ghế → RN138</span>, <span class="font-bold text-white">3-5 ghế → RN280</span>, <span class="font-bold text-white">5+ ghế hoặc khối lượng lớn → RN380</span>. Đây là gợi ý theo dung tích — gọi hotline 0369 333 910 để xác nhận lại theo đúng thực tế trước khi đặt.'
+    answer: 'Chọn theo số ghế/khối lượng dụng cụ: <span class="font-bold text-gray-900 dark:text-white">1-2 ghế → RN65</span>, <span class="font-bold text-gray-900 dark:text-white">2-3 ghế → RN138</span>, <span class="font-bold text-gray-900 dark:text-white">3-5 ghế → RN280</span>, <span class="font-bold text-gray-900 dark:text-white">5+ ghế hoặc khối lượng lớn → RN380</span>. Đây là gợi ý theo dung tích — gọi hotline 0369 333 910 để xác nhận lại theo đúng thực tế trước khi đặt.'
   },
   {
     question: 'Hỏng thì bảo hành thế nào, mua online có sợ không đúng hàng?',
@@ -34,7 +34,7 @@ const FAQSection: React.FC = () => {
   };
 
   return (
-    <section className="py-20 md:py-32 bg-[#0F1115] border-t border-gray-900">
+    <section className="py-20 md:py-32 bg-gray-50 dark:bg-[#0F1115] border-t border-gray-100 dark:border-gray-900">
       <div className="container mx-auto px-4 max-w-4xl">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -43,10 +43,10 @@ const FAQSection: React.FC = () => {
           transition={{ duration: 0.5 }}
           className="mb-12 md:mb-16"
         >
-          <div className="text-gray-400 font-bold tracking-[0.2em] uppercase text-xs md:text-sm mb-4">
+          <div className="text-gray-500 dark:text-gray-400 font-bold tracking-[0.2em] uppercase text-xs md:text-sm mb-4">
             Câu Hỏi Thường Gặp
           </div>
-          <h2 className="text-3xl md:text-5xl font-black text-white tracking-tight uppercase">
+          <h2 className="text-3xl md:text-5xl font-black text-gray-950 dark:text-white tracking-tight uppercase">
             Trước khi gọi, xem qua <br className="hidden sm:block" /> 4 câu hỏi này
           </h2>
         </motion.div>
@@ -62,7 +62,7 @@ const FAQSection: React.FC = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 key={index}
-                className={`border border-gray-800 rounded-2xl md:rounded-3xl overflow-hidden transition-colors duration-300 ${isOpen ? 'bg-[#181B21] border-gray-700' : 'bg-[#181B21]/50 hover:bg-[#181B21] hover:border-gray-700 cursor-pointer'}`}
+                className={`border rounded-2xl md:rounded-3xl overflow-hidden transition-colors duration-300 ${isOpen ? 'bg-white dark:bg-[#181B21] border-gray-300 dark:border-gray-700 shadow-sm' : 'bg-white/50 dark:bg-[#181B21]/50 hover:bg-white dark:hover:bg-[#181B21] border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 cursor-pointer shadow-sm'}`}
                 onClick={() => !isOpen && toggleFAQ(index)}
               >
                 <button 
@@ -72,10 +72,10 @@ const FAQSection: React.FC = () => {
                     toggleFAQ(index);
                   }}
                 >
-                  <h3 className="text-lg md:text-xl font-bold text-white leading-snug">
+                  <h3 className="text-lg md:text-xl font-bold text-gray-950 dark:text-white leading-snug">
                     {faq.question}
                   </h3>
-                  <div className={`mt-1 flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors ${isOpen ? 'text-[#00C9B1] hover:bg-gray-800' : 'text-gray-400 hover:text-white hover:bg-gray-800'}`}>
+                  <div className={`mt-1 flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-colors ${isOpen ? 'text-[#EE4D2D] dark:text-[#00C9B1] hover:bg-gray-100 dark:hover:bg-gray-800' : 'text-gray-400 hover:text-gray-600 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800'}`}>
                     {isOpen ? <X size={20} strokeWidth={2.5} /> : <Plus size={20} strokeWidth={2.5} />}
                   </div>
                 </button>
@@ -90,7 +90,7 @@ const FAQSection: React.FC = () => {
                     >
                       <div className="px-6 md:px-8 pb-8 pt-0">
                         <p 
-                          className="text-gray-400 text-sm md:text-base leading-relaxed"
+                          className="text-gray-600 dark:text-gray-400 text-sm md:text-base leading-relaxed"
                           dangerouslySetInnerHTML={{ __html: faq.answer }}
                         ></p>
                       </div>

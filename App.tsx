@@ -8,7 +8,9 @@ import {
   Phone, 
   RefreshCw, 
   Zap, 
-  ArrowUp 
+  ArrowUp,
+  Sun,
+  Moon
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import Papa from 'papaparse';
@@ -26,6 +28,31 @@ const App: React.FC = () => {
   const [lastUpdated, setLastUpdated] = useState<string>('');
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [timeLeft, setTimeLeft] = useState({ hours: 0, minutes: 0, seconds: 0 });
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+
+  useEffect(() => {
+    // Check initial theme
+    const isDark = document.documentElement.classList.contains('dark') || localStorage.theme === 'dark';
+    if (isDark) {
+      setTheme('dark');
+      document.documentElement.classList.add('dark');
+    } else {
+      setTheme('light');
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    setTheme(prev => {
+      const next = prev === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('theme', next);
+      if (next === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+      return next;
+    });
+  };
 
   useEffect(() => {
     const calculateTimeLeft = () => {
@@ -182,9 +209,9 @@ const App: React.FC = () => {
   }, [activeCategory, products]);
 
   return (
-    <div className="min-h-screen flex flex-col selection:bg-orange-100 selection:text-orange-600 bg-white antialiased">
+    <div className="min-h-screen flex flex-col selection:bg-orange-100 selection:text-orange-600 bg-white dark:bg-gray-950 antialiased">
       {/* Top Bar Status */}
-      <div className="bg-gray-950 text-white py-2 md:py-3 text-[9px] sm:text-[10px] md:text-xs font-bold uppercase tracking-[0.1em] md:tracking-[0.15em] z-[60] relative border-b border-gray-800">
+      <div className="bg-gray-950 dark:bg-black text-white py-2 md:py-3 text-[9px] sm:text-[10px] md:text-xs font-bold uppercase tracking-[0.1em] md:tracking-[0.15em] z-[60] relative border-b border-gray-800">
         <div className="container mx-auto px-4 flex justify-between items-center">
           <div className="flex items-center gap-2 md:gap-4">
             <div className="flex items-center gap-1.5 md:gap-2">
@@ -207,7 +234,7 @@ const App: React.FC = () => {
       <header className="absolute top-9 md:top-11 left-0 right-0 z-50 bg-transparent py-6 md:py-12">
         <div className="container mx-auto px-4 flex justify-between items-center">
           <div className="flex items-center gap-3 md:gap-5 group cursor-pointer" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
-            <div className="p-1.5 md:p-2 rounded-xl md:rounded-2xl transition-all duration-500 shadow-lg bg-white flex items-center justify-center w-10 h-10 md:w-14 md:h-14">
+            <div className="p-1.5 md:p-2 rounded-xl md:rounded-2xl transition-all duration-500 shadow-lg bg-white dark:bg-gray-900 flex items-center justify-center w-10 h-10 md:w-14 md:h-14">
               {LOGO_URL ? (
                 <img src={LOGO_URL} alt="Logo" className="w-full h-full object-contain" />
               ) : (
@@ -222,8 +249,11 @@ const App: React.FC = () => {
             </div>
           </div>
           <div className="flex items-center gap-3 md:gap-5">
-            <button onClick={fetchData} className="p-2 sm:p-3 md:p-4 rounded-xl md:rounded-2xl border bg-white hover:bg-gray-50 transition-all border-gray-100 hidden sm:flex shadow-sm">
-              <RefreshCw size={18} className={`md:w-[22px] md:h-[22px] ${loading ? 'animate-spin text-[#EE4D2D]' : 'text-gray-400'}`} />
+            <button onClick={toggleTheme} className="p-2 sm:p-3 md:p-4 rounded-xl md:rounded-2xl border bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all border-gray-100 dark:border-gray-800 shadow-sm flex items-center justify-center text-gray-500 dark:text-gray-400">
+              {theme === 'dark' ? <Sun size={18} className="md:w-[22px] md:h-[22px]" /> : <Moon size={18} className="md:w-[22px] md:h-[22px]" />}
+            </button>
+            <button onClick={fetchData} className="p-2 sm:p-3 md:p-4 rounded-xl md:rounded-2xl border bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all border-gray-100 dark:border-gray-800 hidden sm:flex shadow-sm text-gray-500 dark:text-gray-400">
+              <RefreshCw size={18} className={`md:w-[22px] md:h-[22px] ${loading ? 'animate-spin text-[#EE4D2D]' : 'text-gray-400 dark:text-gray-500'}`} />
             </button>
             <a href={CONTACT.zalo} target="_blank" rel="noopener noreferrer" className="bg-[#EE4D2D] text-white px-6 sm:px-8 md:px-14 py-3 sm:py-3.5 md:py-4.5 rounded-xl md:rounded-2xl font-black text-xs sm:text-sm md:text-base shadow-xl md:shadow-2xl shadow-orange-200 hover:scale-[1.02] active:scale-95 transition-all uppercase italic tracking-wider">
               Kết nối Zalo
@@ -238,7 +268,7 @@ const App: React.FC = () => {
            {HERO_BG_URL ? (
              <>
                <img src={HERO_BG_URL} alt="Background" className="w-full h-full object-cover opacity-60" />
-               <div className="absolute inset-0 bg-gradient-to-b from-gray-950/80 via-gray-950/40 to-white"></div>
+               <div className="absolute inset-0 bg-gradient-to-b from-gray-950/80 via-gray-950/40 to-white dark:to-[#0F1115]"></div>
              </>
            ) : (
              <>
@@ -292,7 +322,7 @@ const App: React.FC = () => {
       </section>
 
       {/* Catalog Section - Adjusted Leading to prevent overlap */}
-      <section id="catalog" className="py-20 md:py-32 lg:py-48 bg-gray-50/60 min-h-[900px] border-t border-gray-100">
+      <section id="catalog" className="py-20 md:py-32 lg:py-48 bg-gray-50/60 dark:bg-[#0F1115] min-h-[900px] border-t border-gray-100 dark:border-gray-900">
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 md:mb-32 gap-10 md:gap-16">
             <motion.div 
@@ -305,7 +335,7 @@ const App: React.FC = () => {
               <div className="inline-block bg-[#EE4D2D]/10 text-[#EE4D2D] px-6 py-2.5 sm:px-8 sm:py-3.5 rounded-xl sm:rounded-2xl text-[10px] sm:text-[12px] font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] mb-8 sm:mb-12">
                 Authorized Distribution
               </div>
-              <h2 className="text-4xl md:text-6xl lg:text-[76px] font-black text-gray-950 mb-8 sm:mb-10 tracking-tight uppercase italic leading-[1.2]">
+              <h2 className="text-4xl md:text-6xl lg:text-[76px] font-black text-gray-950 dark:text-white mb-8 sm:mb-10 tracking-tight uppercase italic leading-[1.2]">
                 Catalog Sản <br className="hidden sm:block"/> Phẩm Ưu Đãi
               </h2>
               <div className="flex flex-col gap-2 sm:gap-3 mt-4 sm:mt-6">
@@ -350,8 +380,8 @@ const App: React.FC = () => {
                   onClick={() => setActiveCategory(cat)}
                   className={`whitespace-nowrap px-8 sm:px-14 py-4 sm:py-6 rounded-xl sm:rounded-2xl font-black text-xs sm:text-sm md:text-base transition-all duration-400 border-2 ${
                     activeCategory === cat 
-                      ? 'bg-[#EE4D2D] border-[#EE4D2D] text-white shadow-xl shadow-orange-200/50' 
-                      : 'bg-white border-transparent text-gray-400 hover:bg-gray-100 hover:text-gray-950'
+                      ? 'bg-[#EE4D2D] border-[#EE4D2D] text-white shadow-xl shadow-orange-200/50 dark:shadow-none' 
+                      : 'bg-white border-transparent text-gray-400 hover:bg-gray-100 hover:text-gray-950 dark:bg-gray-900 dark:text-gray-500 dark:hover:bg-gray-800 dark:hover:text-white'
                   }`}
                 >
                   {cat}
@@ -362,7 +392,7 @@ const App: React.FC = () => {
 
           {loading ? (
             <div className="flex flex-col items-center justify-center py-32 md:py-64">
-              <div className="w-16 h-16 md:w-24 md:h-24 border-4 md:border-[7px] border-orange-50 border-t-[#EE4D2D] rounded-full animate-spin mb-8 md:mb-14"></div>
+              <div className="w-16 h-16 md:w-24 md:h-24 border-4 md:border-[7px] border-orange-50 dark:border-gray-800 border-t-[#EE4D2D] dark:border-t-[#EE4D2D] rounded-full animate-spin mb-8 md:mb-14"></div>
               <p className="text-gray-400 font-black uppercase tracking-[0.2em] md:tracking-[0.4em] animate-pulse italic text-xs md:text-base">Đang đồng bộ danh mục từ tổng kho...</p>
             </div>
           ) : (
@@ -416,7 +446,7 @@ const App: React.FC = () => {
       </section>
 
       {/* Why Us - Adjusted Leading to 1.2 */}
-      <section className="py-24 md:py-48 lg:py-64 bg-white">
+      <section className="py-24 md:py-48 lg:py-64 bg-white dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
@@ -425,7 +455,7 @@ const App: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="text-center max-w-6xl mx-auto mb-16 md:mb-32 lg:mb-40"
           >
-            <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-[82px] font-black text-gray-950 tracking-tight uppercase italic leading-[1.2] mb-2 sm:mb-4">
+            <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-[82px] font-black text-gray-950 dark:text-white tracking-tight uppercase italic leading-[1.2] mb-2 sm:mb-4">
               Lợi thế cạnh tranh tại
             </h2>
             <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-[82px] font-black text-[#EE4D2D] tracking-tight uppercase italic leading-[1.2]">
@@ -441,13 +471,13 @@ const App: React.FC = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 key={idx} 
-                className="bg-gray-50/70 p-10 sm:p-12 md:p-16 rounded-[3rem] md:rounded-[4.5rem] hover:bg-orange-50/60 transition-all duration-700 group border border-transparent hover:border-orange-100 flex flex-col items-center text-center"
+                className="bg-gray-50/70 dark:bg-gray-900 p-10 sm:p-12 md:p-16 rounded-[3rem] md:rounded-[4.5rem] hover:bg-orange-50/60 dark:hover:bg-gray-800 transition-all duration-700 group border border-transparent hover:border-orange-100 dark:hover:border-gray-700 flex flex-col items-center text-center"
               >
-                <div className="bg-white w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-[2rem] md:rounded-[2.5rem] flex items-center justify-center shadow-2xl mb-10 md:mb-14 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-500">
+                <div className="bg-white dark:bg-gray-800 w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-[2rem] md:rounded-[2.5rem] flex items-center justify-center shadow-2xl mb-10 md:mb-14 group-hover:scale-110 group-hover:-rotate-6 transition-all duration-500">
                   {item.icon}
                 </div>
-                <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-gray-950 mb-6 md:mb-8 tracking-normal uppercase italic leading-tight">{item.title}</h3>
-                <p className="text-gray-500 font-medium leading-[1.6] sm:leading-[1.8] italic text-sm sm:text-base md:text-lg opacity-80 px-2 md:px-4">{item.description}</p>
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-gray-950 dark:text-white mb-6 md:mb-8 tracking-normal uppercase italic leading-tight">{item.title}</h3>
+                <p className="text-gray-500 dark:text-gray-400 font-medium leading-[1.6] sm:leading-[1.8] italic text-sm sm:text-base md:text-lg opacity-80 px-2 md:px-4">{item.description}</p>
               </motion.div>
             ))}
           </div>
@@ -457,7 +487,7 @@ const App: React.FC = () => {
       <FAQSection />
 
       {/* Footer */}
-      <footer className="bg-gray-950 text-gray-500 py-24 md:py-48 border-t border-gray-900 mt-auto">
+      <footer className="bg-gray-950 dark:bg-[#0A0C10] text-gray-500 py-24 md:py-48 border-t border-gray-900 dark:border-gray-900/50 mt-auto">
         <div className="container mx-auto px-4 text-center">
           <div className="flex items-center justify-center gap-4 sm:gap-6 mb-12 sm:mb-16 group cursor-pointer" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
             {LOGO_URL ? (

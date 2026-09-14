@@ -38,9 +38,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onClick }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5 }}
-      className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100 flex flex-col h-full relative cursor-pointer"
+      className="group bg-white dark:bg-gray-900 rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100 dark:border-gray-800 flex flex-col h-full relative cursor-pointer"
     >
-      <div className="relative aspect-square overflow-hidden bg-gray-50 flex items-center justify-center">
+      <div className="relative aspect-square overflow-hidden bg-gray-50 dark:bg-gray-800 flex items-center justify-center">
         {!imgError ? (
           <img 
             src={product.imageUrl} 
@@ -50,7 +50,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onClick }) => {
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
           />
         ) : (
-          <div className="w-full h-full flex flex-col items-center justify-center text-gray-300 gap-4 bg-gray-50">
+          <div className="w-full h-full flex flex-col items-center justify-center text-gray-300 dark:text-gray-600 gap-4 bg-gray-50 dark:bg-gray-800">
             <ImageOff size={44} strokeWidth={1} />
             <span className="text-[10px] font-black uppercase tracking-widest text-gray-400 text-center px-4 leading-relaxed">Hình ảnh đang cập nhật</span>
           </div>
@@ -70,8 +70,8 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onClick }) => {
         </div>
       </div>
       
-      <div className="p-4 md:p-6 flex flex-col flex-grow bg-white">
-        <h3 className="text-sm md:text-base font-bold text-gray-800 line-clamp-2 mb-4 h-[3rem] group-hover:text-[#EE4D2D] transition-colors leading-[1.45] tracking-tight">
+      <div className="p-4 md:p-6 flex flex-col flex-grow bg-white dark:bg-gray-900">
+        <h3 className="text-sm md:text-base font-bold text-gray-800 dark:text-gray-100 line-clamp-2 mb-4 h-[3rem] group-hover:text-[#EE4D2D] transition-colors leading-[1.45] tracking-tight">
           {product.name}
         </h3>
         
@@ -87,7 +87,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, onClick }) => {
                 </div>
               </>
             ) : (
-              <div className="text-lg sm:text-xl md:text-2xl font-black text-gray-900 tracking-tighter italic leading-none">
+              <div className="text-lg sm:text-xl md:text-2xl font-black text-gray-900 dark:text-gray-100 tracking-tighter italic leading-none">
                 {formatPrice(product.discountedPrice || product.originalPrice)}
               </div>
             )}
