@@ -219,7 +219,7 @@ const App: React.FC = () => {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-1.5 w-1.5 md:h-2 md:w-2 bg-green-500"></span>
               </span>
-              <span className="opacity-70 font-semibold tracking-wider">Hệ thống đồng bộ</span>
+              <span className="opacity-70 font-semibold tracking-wider">Cửa hàng đang mở cửa</span>
             </div>
           </div>
           <div className="flex items-center gap-3 md:gap-6">
@@ -255,7 +255,7 @@ const App: React.FC = () => {
               </span>
               <span className={`text-[8px] sm:text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] sm:tracking-[0.4em] mt-1 md:mt-2 italic transition-colors duration-500 ${
                 scrolled ? 'text-gray-500 dark:text-gray-400' : 'text-gray-300 opacity-90'
-              }`}>Premium Catalog</span>
+              }`}>hàng cao cấp chính hãng</span>
             </div>
           </div>
           <div className="flex items-center gap-3 md:gap-5">
@@ -313,7 +313,7 @@ const App: React.FC = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-4xl sm:text-5xl md:text-[72px] lg:text-[88px] font-black text-white mb-8 sm:mb-12 leading-[1.2] tracking-tight italic uppercase"
+            className="text-4xl sm:text-5xl md:text-[68px] lg:text-[80px] font-black text-white mb-8 sm:mb-12 leading-[1.4] tracking-normal italic uppercase"
           >
             Kho <span className="text-[#EE4D2D]">Tủ Sấy UV</span> <br className="hidden md:block"/>
             <span className="relative inline-block mt-2 md:mt-4">Giá Tận Gốc Online</span>
@@ -355,7 +355,7 @@ const App: React.FC = () => {
               <div className="inline-block bg-[#EE4D2D]/10 text-[#EE4D2D] px-6 py-2.5 sm:px-8 sm:py-3.5 rounded-xl sm:rounded-2xl text-[10px] sm:text-[12px] font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] mb-8 sm:mb-12">
                 Authorized Distribution
               </div>
-              <h2 className="text-4xl md:text-6xl lg:text-[76px] font-black text-gray-950 dark:text-white mb-8 sm:mb-10 tracking-tight uppercase italic leading-[1.2]">
+              <h2 className="text-4xl md:text-5xl lg:text-[68px] font-black text-gray-950 dark:text-white mb-8 sm:mb-10 tracking-normal uppercase italic leading-[1.4]">
                 Catalog Sản <br className="hidden sm:block"/> Phẩm Ưu Đãi
               </h2>
               <div className="flex flex-col gap-2 sm:gap-3 mt-4 sm:mt-6">
@@ -435,7 +435,7 @@ const App: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="text-center max-w-6xl mx-auto mb-10 md:mb-20"
           >
-            <h2 className="text-3xl sm:text-4xl md:text-[56px] lg:text-[64px] font-black tracking-tight uppercase italic leading-[1.2] mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-[52px] lg:text-[60px] font-black tracking-normal uppercase italic leading-[1.4] mb-4">
               Ảnh Sản Phẩm <span className="text-[#EE4D2D]">Thực Tế</span>
             </h2>
             <p className="text-gray-400 text-base sm:text-lg md:text-xl font-medium leading-[1.7] italic max-w-2xl mx-auto px-4">
@@ -475,10 +475,10 @@ const App: React.FC = () => {
             transition={{ duration: 0.6 }}
             className="text-center max-w-6xl mx-auto mb-16 md:mb-32 lg:mb-40"
           >
-            <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-[82px] font-black text-gray-950 dark:text-white tracking-tight uppercase italic leading-[1.2] mb-2 sm:mb-4">
+            <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-[76px] font-black text-gray-950 dark:text-white tracking-normal uppercase italic leading-[1.4] mb-2 sm:mb-4">
               Lợi thế cạnh tranh tại
             </h2>
-            <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-[82px] font-black text-[#EE4D2D] tracking-tight uppercase italic leading-[1.2]">
+            <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-[76px] font-black text-[#EE4D2D] tracking-normal uppercase italic leading-[1.4]">
               Tổng Kho Tủ Sấy UV
             </h2>
           </motion.div>
