@@ -62,6 +62,13 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
       // Nếu thành công sẽ trả về ok
       if (response.ok) {
         setSubmitSuccess(true);
+        if (typeof window !== 'undefined' && window.fbq) {
+          window.fbq('track', 'Lead', {
+            content_name: product.name,
+            currency: 'VND',
+            value: product.discountedPrice
+          });
+        }
       } else {
         throw new Error("Response not OK");
       }

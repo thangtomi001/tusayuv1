@@ -24,3 +24,11 @@ export interface WhyUsPoint {
   description: string;
   icon: React.ReactNode;
 }
+
+declare global {
+  interface Window {
+    fbq: any;
+    _fbq: any;
+  }
+}
+
