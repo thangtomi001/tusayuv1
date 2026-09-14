@@ -231,10 +231,16 @@ const App: React.FC = () => {
         </div>
       </div>
 
-      <header className="absolute top-9 md:top-11 left-0 right-0 z-50 bg-transparent py-6 md:py-12">
+      <header className={`fixed left-0 right-0 z-[100] transition-all duration-500 ease-in-out ${
+        scrolled 
+          ? 'top-0 bg-white/90 dark:bg-gray-950/90 backdrop-blur-xl border-b border-gray-200 dark:border-gray-800 shadow-sm py-3 sm:py-4' 
+          : 'top-9 md:top-11 bg-transparent py-6 md:py-12'
+      }`}>
         <div className="container mx-auto px-4 flex justify-between items-center">
           <div className="flex items-center gap-3 md:gap-5 group cursor-pointer" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
-            <div className="p-1.5 md:p-2 rounded-xl md:rounded-2xl transition-all duration-500 shadow-lg bg-white dark:bg-gray-900 flex items-center justify-center w-10 h-10 md:w-14 md:h-14">
+            <div className={`p-1.5 md:p-2 rounded-xl md:rounded-2xl transition-all duration-500 shadow-lg flex items-center justify-center w-10 h-10 md:w-14 md:h-14 ${
+              scrolled ? 'bg-gray-100 dark:bg-gray-800' : 'bg-white dark:bg-gray-900'
+            }`}>
               {LOGO_URL ? (
                 <img src={LOGO_URL} alt="Logo" className="w-full h-full object-contain" />
               ) : (
@@ -242,20 +248,34 @@ const App: React.FC = () => {
               )}
             </div>
             <div className="flex flex-col">
-              <span className="text-xl sm:text-2xl md:text-3xl font-black tracking-tight uppercase text-white leading-none">
+              <span className={`text-xl sm:text-2xl md:text-3xl font-black tracking-tight uppercase leading-none transition-colors duration-500 ${
+                scrolled ? 'text-gray-950 dark:text-white' : 'text-white'
+              }`}>
                 TỔNG KHO <span className="text-[#EE4D2D]">UV</span>
               </span>
-              <span className="text-[8px] sm:text-[9px] md:text-[10px] font-bold text-gray-300 uppercase tracking-[0.2em] sm:tracking-[0.4em] mt-1 md:mt-2 opacity-90 italic">Premium Catalog</span>
+              <span className={`text-[8px] sm:text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] sm:tracking-[0.4em] mt-1 md:mt-2 italic transition-colors duration-500 ${
+                scrolled ? 'text-gray-500 dark:text-gray-400' : 'text-gray-300 opacity-90'
+              }`}>Premium Catalog</span>
             </div>
           </div>
           <div className="flex items-center gap-3 md:gap-5">
-            <button onClick={toggleTheme} className="p-2 sm:p-3 md:p-4 rounded-xl md:rounded-2xl border bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all border-gray-100 dark:border-gray-800 shadow-sm flex items-center justify-center text-gray-500 dark:text-gray-400">
+            <button onClick={toggleTheme} className={`p-2 sm:p-3 md:p-4 rounded-xl md:rounded-2xl border transition-all shadow-sm flex items-center justify-center ${
+              scrolled 
+                ? 'bg-gray-100 dark:bg-gray-800 border-gray-200 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300' 
+                : 'bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 border-gray-100 dark:border-gray-800 text-gray-500 dark:text-gray-400'
+            }`}>
               {theme === 'dark' ? <Sun size={18} className="md:w-[22px] md:h-[22px]" /> : <Moon size={18} className="md:w-[22px] md:h-[22px]" />}
             </button>
-            <button onClick={fetchData} className="p-2 sm:p-3 md:p-4 rounded-xl md:rounded-2xl border bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 transition-all border-gray-100 dark:border-gray-800 hidden sm:flex shadow-sm text-gray-500 dark:text-gray-400">
-              <RefreshCw size={18} className={`md:w-[22px] md:h-[22px] ${loading ? 'animate-spin text-[#EE4D2D]' : 'text-gray-400 dark:text-gray-500'}`} />
+            <button onClick={fetchData} className={`p-2 sm:p-3 md:p-4 rounded-xl md:rounded-2xl border transition-all hidden sm:flex shadow-sm ${
+              scrolled
+                ? 'bg-gray-100 dark:bg-gray-800 border-gray-200 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300'
+                : 'bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 border-gray-100 dark:border-gray-800 text-gray-500 dark:text-gray-400'
+            }`}>
+              <RefreshCw size={18} className={`md:w-[22px] md:h-[22px] ${loading ? 'animate-spin text-[#EE4D2D]' : ''}`} />
             </button>
-            <a href={CONTACT.zalo} target="_blank" rel="noopener noreferrer" className="bg-[#EE4D2D] text-white px-6 sm:px-8 md:px-14 py-3 sm:py-3.5 md:py-4.5 rounded-xl md:rounded-2xl font-black text-xs sm:text-sm md:text-base shadow-xl md:shadow-2xl shadow-orange-200 hover:scale-[1.02] active:scale-95 transition-all uppercase italic tracking-wider">
+            <a href={CONTACT.zalo} target="_blank" rel="noopener noreferrer" className={`text-white px-6 sm:px-8 md:px-14 py-3 sm:py-3.5 md:py-4.5 rounded-xl md:rounded-2xl font-black text-xs sm:text-sm md:text-base shadow-xl md:shadow-2xl shadow-orange-200 hover:scale-[1.02] active:scale-95 transition-all uppercase italic tracking-wider ${
+              scrolled ? 'bg-[#EE4D2D] hover:bg-[#d64124]' : 'bg-[#EE4D2D] hover:bg-[#d64124]'
+            }`}>
               Kết nối Zalo
             </a>
           </div>
